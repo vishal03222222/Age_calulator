@@ -1,5 +1,5 @@
-
 import React, { Component } from "react";
+import "./AgeCalculator.css"; // Import the external CSS
 
 class AgeCalculator extends Component {
   constructor(props) {
@@ -66,103 +66,29 @@ class AgeCalculator extends Component {
   render() {
     const { birthDate, ageResult } = this.state;
     return (
-      <div style={styles.container}>
-        <div style={styles.calculator}>
-          <h1 style={styles.title}>
+      <div className="container">
+        <div className="calculator">
+          <h1 className="title">
             JavaScript <br />
-            <span style={styles.titleSpan}>Age Calculator</span>
+            <span className="title-span">Age Calculator</span>
           </h1>
-          <div style={styles.inputBox}>
+          <div className="input-box">
             <input
               type="date"
               value={birthDate}
               onChange={this.handleDateChange}
               max={new Date().toISOString().split("T")[0]}
-              style={styles.input}
+              className="input"
             />
-            <button onClick={this.calculateAge} style={styles.button}>
+            <button onClick={this.calculateAge} className="button">
               Calculate
             </button>
           </div>
-          <p style={styles.result}>{ageResult}</p>
+          <p className="result">{ageResult}</p>
         </div>
       </div>
     );
   }
 }
-
-const styles = {
-  container: {
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "linear-gradient(135deg, #4203a9, #90bafc)",
-    backgroundSize: "400% 400%",
-    animation: "gradientBG 6s ease infinite",
-  },
-  calculator: {
-    width: "90%",
-    maxWidth: "600px", 
-    padding: "50px", 
-    borderRadius: "20px",
-    textAlign: "center",
-    background: "rgba(255, 255, 255, 0.2)", 
-    backdropFilter: "blur(12px)",
-    boxShadow: "0 12px 35px rgba(0, 0, 0, 0.3)", 
-  },
-  title: {
-    fontSize: "42px", 
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  titleSpan: {
-    color: "#ffff76",
-  },
-  inputBox: {
-    margin: "40px 0",
-    padding: "20px",
-    display: "flex",
-    alignItems: "center",
-    background: "#fff",
-    borderRadius: "10px",
-  },
-  input: {
-    flex: 1,
-    border: "none",
-    outline: "none",
-    fontSize: "18px",
-    padding: "12px",
-  },
-  button: {
-    background: "#ffff76",
-    border: "none",
-    outline: "none",
-    padding: "12px 25px",
-    borderRadius: "8px",
-    fontWeight: "bold",
-    color: "#333",
-    cursor: "pointer",
-    transition: "0.3s",
-  },
-  result: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    color: "#ffff76",
-    textShadow: "0 0 12px rgba(255, 255, 118, 0.9)", // Stronger glow
-    marginTop: "25px",
-  },
-};
-
-// Background animation
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(`
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-`, styleSheet.cssRules.length);
 
 export default AgeCalculator;
